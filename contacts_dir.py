@@ -5,7 +5,7 @@ FOLDER = 'contacts/' #carpeta de contactos
 
 def app():
     #revisa si la carpeta existe o no
-    create_directoro()
+    create_directoro() 
 
 
 def create_directoro():
