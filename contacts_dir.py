@@ -14,7 +14,7 @@ def create_directoro():
         os.makedirs(FOLDER)           # si no existe creala
     #este else es opcional
     else:
-        print('La carpeta ya existe')
+        print('La carpeta ya existee')
 
 
 
