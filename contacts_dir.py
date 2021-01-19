@@ -2,6 +2,7 @@
 import os 
 
 FOLDER = 'contacts/' #carpeta de contactos
+EXTENCION = '.txt'   #Agregamos una constante para la extencion de archivos 
 
 def app():
     #revisa si la carpeta existe o no
@@ -18,7 +19,8 @@ def app():
 
         #ejecutar las opciones
         if opcion == 1:
-            print('Agregar contacto')
+            #funciones de opCrud
+            Agregar_contacto()
             preguntar = False
         elif opcion == 2:
             print('Editar Contacto')
@@ -34,7 +36,13 @@ def app():
             preguntar = False
         else:
             print('Opcion no valida. Intente de nuevo')
+def Agregar_contacto():
+    print('Escribe los datos para agregar el nuevo contacto')
+    nombre_contacto = input('Nombre del Contacto: ')
 
+    #contactos/juan.txt
+    with open(FOLDER + nombre_contacto + EXTENCION, 'w') as archivo: #los signos de + solo concatenan 'agregar multiples valores en la parte de una lines'
+        archivo.write('Nombre: '+ nombre_contacto + '\r\n')
 def mostrar_menu():
     print('Seleccione del menu lo que desea hacer: ')
     print('1) Agregar Nuevo Contacto')
