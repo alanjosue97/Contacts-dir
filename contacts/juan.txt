@@ -1,0 +1,3 @@
+Nombre: juan
+Telefono: 3121234345
+Categoria Trabajador

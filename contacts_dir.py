@@ -4,6 +4,13 @@ import os
 FOLDER = 'contacts/' #carpeta de contactos
 EXTENCION = '.txt'   #Agregamos una constante para la extencion de archivos 
 
+
+#creamos una clase de contactos
+class Contacto:
+    def __init__(self, nombre, telefono, categoria):
+        self.nombre = nombre
+        self.telefono = telefono
+        self.categoria = categoria
 def app():
     #revisa si la carpeta existe o no
     create_directorio() 
@@ -42,7 +49,20 @@ def Agregar_contacto():
 
     #contactos/juan.txt
     with open(FOLDER + nombre_contacto + EXTENCION, 'w') as archivo: #los signos de + solo concatenan 'agregar multiples valores en la parte de una lines'
+        #resto de los campos
+        telefono_contacto = input('Agregar telefono: ')
+        categoria_contacto = input('Categoria Contacto: ')
+
+        #Instanciar la clase
+        contacto = Contacto(nombre_contacto, telefono_contacto, categoria_contacto)
+
+        #escribir en el archivo 
         archivo.write('Nombre: '+ nombre_contacto + '\r\n')
+        archivo.write('Telefono: '+ telefono_contacto + '\r\n')
+        archivo.write('Categoria '+ categoria_contacto + '\r\n')
+
+        #mostrar un msj de exito
+        print('\r\n Contacto creado correctamente \r\n')
 def mostrar_menu():
     print('Seleccione del menu lo que desea hacer: ')
     print('1) Agregar Nuevo Contacto')
