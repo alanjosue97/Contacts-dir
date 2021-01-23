@@ -47,22 +47,34 @@ def Agregar_contacto():
     print('Escribe los datos para agregar el nuevo contacto')
     nombre_contacto = input('Nombre del Contacto: ')
 
-    #contactos/juan.txt
-    with open(FOLDER + nombre_contacto + EXTENCION, 'w') as archivo: #los signos de + solo concatenan 'agregar multiples valores en la parte de una lines'
-        #resto de los campos
-        telefono_contacto = input('Agregar telefono: ')
-        categoria_contacto = input('Categoria Contacto: ')
+    #revisar si el archivo ya exite antes de crearlo
+    existe = os.path.isfile(FOLDER + nombre_contacto + EXTENCION)
 
-        #Instanciar la clase
-        contacto = Contacto(nombre_contacto, telefono_contacto, categoria_contacto)
+    if not existe:
 
-        #escribir en el archivo 
-        archivo.write('Nombre: '+ nombre_contacto + '\r\n')
-        archivo.write('Telefono: '+ telefono_contacto + '\r\n')
-        archivo.write('Categoria '+ categoria_contacto + '\r\n')
+        #contactos/juan.txt
+        with open(FOLDER + nombre_contacto + EXTENCION, 'w') as archivo: #los signos de + solo concatenan 'agregar multiples valores en la parte de una lines'
+            #resto de los campos
+            telefono_contacto = input('Agregar telefono: ')
+            categoria_contacto = input('Categoria Contacto: ')
 
-        #mostrar un msj de exito
-        print('\r\n Contacto creado correctamente \r\n')
+            #Instanciar la clase
+            contacto = Contacto(nombre_contacto, telefono_contacto, categoria_contacto)
+
+            #escribir en el archivo 
+            archivo.write('Nombre: '+ nombre_contacto + '\r\n')
+            archivo.write('Telefono: '+ telefono_contacto + '\r\n')
+            archivo.write('Categoria '+ categoria_contacto + '\r\n')
+
+            #mostrar un msj de exito
+            print('\r\n Contacto creado correctamente \r\n')
+
+    else:
+        print('\r\nEse contacto ya existe!!\r\n')
+    
+    #reinicar la app
+    app()
+
 def mostrar_menu():
     print('Seleccione del menu lo que desea hacer: ')
     print('1) Agregar Nuevo Contacto')
