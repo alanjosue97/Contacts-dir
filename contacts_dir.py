@@ -30,7 +30,7 @@ def app():
             Agregar_contacto()
             preguntar = False
         elif opcion == 2:
-            print('Editar Contacto')
+            editar_contacto()
             preguntar = False
         elif opcion == 3:
             print('Ver Contactos')
@@ -43,12 +43,24 @@ def app():
             preguntar = False
         else:
             print('Opcion no valida. Intente de nuevo')
+def editar_contacto():
+    print('Escribe el nombre del contacto a editar')
+    nombre_anterior = input('Nombre del contacto que desea editar: ')
+
+    existe = existe_contacto(nombre_anterior)
+
+    if existe:
+        print('Puedes editar')
+
+    else:
+        print('Ese contacto no existe')
+
 def Agregar_contacto():
     print('Escribe los datos para agregar el nuevo contacto')
     nombre_contacto = input('Nombre del Contacto: ')
 
     #revisar si el archivo ya exite antes de crearlo
-    existe = os.path.isfile(FOLDER + nombre_contacto + EXTENCION)
+    existe = existe_contacto(nombre_anterior)
 
     if not existe:
 
@@ -90,6 +102,11 @@ def create_directorio():
         #este else es opcional
     #else:
         #print('La carpeta ya existee')
-    
+
+
+#reviasr si el contacto a editar existe
+#revisar si el archivo ya exite antes de crearlo
+def existe_contacto(nombre):
+    return os.path.isfile(FOLDER + nombre + EXTENCION)
 
 app()
